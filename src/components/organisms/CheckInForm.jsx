@@ -11,7 +11,7 @@ import { checkInService } from "@/services/api/checkInService";
 const CheckInForm = ({ onCheckInComplete, currentUser }) => {
   const [priorities, setPriorities] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showCelebration, setShowCelebration] = useState(false);
+const [showCelebration, setShowCelebration] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,22 +21,33 @@ const CheckInForm = ({ onCheckInComplete, currentUser }) => {
       return;
     }
 
+    // Validate that there's meaningful content
+    const priorityList = priorities
+      .split("\n")
+      .map(p => p.trim())
+      .filter(p => p.length > 0);
+
+    if (priorityList.length === 0) {
+      toast.error("Please add at least one priority for today! 📝");
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
-      const priorityList = priorities
-        .split("\n")
-        .filter(p => p.trim())
-        .map(p => p.trim());
-      
       await checkInService.createCheckIn(currentUser.id, priorityList);
       
       setShowCelebration(true);
       toast.success("Great! Your priorities are set for today! 🎯");
       setPriorities("");
-      onCheckInComplete?.();
+      
+      // Small delay to let user see the success message before transitioning
+      setTimeout(() => {
+        onCheckInComplete?.();
+      }, 1000);
       
     } catch (error) {
+      console.error("Check-in error:", error);
       toast.error("Oops! Something went wrong. Please try again. 😅");
     } finally {
       setIsSubmitting(false);

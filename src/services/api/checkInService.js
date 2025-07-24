@@ -192,9 +192,9 @@ class CheckInService {
       completedTasks: completed,
       streak: Math.floor(Math.random() * 7) + 1
     };
-  }
+}
 
-categorizeTask(text) {
+  categorizeTask(text) {
     const lowerText = text.toLowerCase();
     if (lowerText.includes("campaign") || lowerText.includes("marketing") || lowerText.includes("promotion")) return "Campaign";
     if (lowerText.includes("admin") || lowerText.includes("administrative") || lowerText.includes("paperwork")) return "Admin";
