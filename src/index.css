@@ -1,0 +1,141 @@
+@import "react-toastify/dist/ReactToastify.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom toast styles */
+.Toastify__toast-container {
+  font-size: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.Toastify__toast {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
+
+.Toastify__toast--success {
+  background: linear-gradient(135deg, #95E1D3, #4ECDC4);
+  color: white;
+}
+
+.Toastify__toast--error {
+  background: linear-gradient(135deg, #EE5A6F, #FF6B6B);
+  color: white;
+}
+
+.Toastify__toast--warning {
+  background: linear-gradient(135deg, #FECA57, #FFE66D);
+  color: #333;
+}
+
+.Toastify__toast--info {
+  background: linear-gradient(135deg, #48DBFB, #4ECDC4);
+  color: white;
+}
+
+/* Hand-drawn border effect */
+.hand-drawn-border {
+  position: relative;
+}
+
+.hand-drawn-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #FFE66D) border-box;
+  mask: linear-gradient(white 0 0) padding-box, linear-gradient(white 0 0);
+  mask-composite: exclude;
+  opacity: 0.3;
+}
+
+/* Emoji bounce animation */
+@keyframes emoji-bounce {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.2) rotate(-5deg); }
+  75% { transform: scale(1.1) rotate(5deg); }
+}
+
+.emoji-celebration {
+  animation: emoji-bounce 0.6s ease-in-out;
+}
+
+/* Confetti animation keyframes */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti-piece {
+  animation: confetti-fall 3s ease-in-out forwards;
+}
+
+/* Floating label styles */
+.floating-label {
+  position: relative;
+}
+
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label {
+  transform: translateY(-24px) scale(0.85);
+  color: #FF6B6B;
+}
+
+.floating-label label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  transition: all 0.2s ease-out;
+  pointer-events: none;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+/* Progress ring animation */
+@keyframes progress-ring {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.progress-ring-circle {
+  transition: stroke-dasharray 0.3s ease-in-out;
+  animation: progress-ring 0.6s ease-out;
+}
+
+/* Blob navigation indicator */
+.blob-indicator {
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF9F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #4ECDC4, #FFE66D);
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "id": "user-1",
+    "name": "Alex Johnson",
+    "avatar": null,
+    "weeklyStreak": 5,
+    "joinedAt": "2024-01-15T00:00:00Z"
+  },
+  {
+    "Id": 2,
+    "id": "user-2", 
+    "name": "Sarah Chen",
+    "avatar": null,
+    "weeklyStreak": 3,
+    "joinedAt": "2024-01-20T00:00:00Z"
+  },
+  {
+    "Id": 3,
+    "id": "user-3",
+    "name": "Marcus Williams",
+    "avatar": null,
+    "weeklyStreak": 7,
+    "joinedAt": "2024-01-10T00:00:00Z"
+  },
+  {
+    "Id": 4,
+    "id": "user-4",
+    "name": "Emma Davis",
+    "avatar": null,
+    "weeklyStreak": 2,
+    "joinedAt": "2024-01-25T00:00:00Z"
+  },
+  {
+    "Id": 5,
+    "id": "user-5",
+    "name": "David Rodriguez",
+    "avatar": null,
+    "weeklyStreak": 4,
+    "joinedAt": "2024-01-18T00:00:00Z"
+  }
+]

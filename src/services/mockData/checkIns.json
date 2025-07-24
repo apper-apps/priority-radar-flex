@@ -1,0 +1,37 @@
+[
+  {
+    "Id": 1,
+    "userId": "user-1",
+    "date": "2024-01-29T00:00:00Z",
+    "priorities": [1, 2, 3],
+    "submittedAt": "2024-01-29T08:00:00Z"
+  },
+  {
+    "Id": 2,
+    "userId": "user-2",
+    "date": "2024-01-29T00:00:00Z", 
+    "priorities": [4, 5, 6],
+    "submittedAt": "2024-01-29T09:15:00Z"
+  },
+  {
+    "Id": 3,
+    "userId": "user-3",
+    "date": "2024-01-29T00:00:00Z",
+    "priorities": [7, 8, 9],
+    "submittedAt": "2024-01-29T07:30:00Z"
+  },
+  {
+    "Id": 4,
+    "userId": "user-4",
+    "date": "2024-01-29T00:00:00Z",
+    "priorities": [10, 11],
+    "submittedAt": "2024-01-29T10:00:00Z"
+  },
+  {
+    "Id": 5,
+    "userId": "user-5",
+    "date": "2024-01-29T00:00:00Z",
+    "priorities": [12, 13],
+    "submittedAt": "2024-01-29T08:45:00Z"
+  }
+]
