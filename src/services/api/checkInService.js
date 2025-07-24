@@ -194,11 +194,13 @@ class CheckInService {
     };
   }
 
-  categorizeTask(text) {
+categorizeTask(text) {
     const lowerText = text.toLowerCase();
+    if (lowerText.includes("campaign") || lowerText.includes("marketing") || lowerText.includes("promotion")) return "Campaign";
+    if (lowerText.includes("admin") || lowerText.includes("administrative") || lowerText.includes("paperwork")) return "Admin";
+    if (lowerText.includes("creative") || lowerText.includes("design") || lowerText.includes("mockup") || lowerText.includes("artistic")) return "Creative";
     if (lowerText.includes("meeting") || lowerText.includes("call")) return "Meeting";
     if (lowerText.includes("code") || lowerText.includes("develop") || lowerText.includes("bug")) return "Development";
-    if (lowerText.includes("design") || lowerText.includes("mockup")) return "Design";
     if (lowerText.includes("review") || lowerText.includes("approve")) return "Review";
     if (lowerText.includes("write") || lowerText.includes("document")) return "Documentation";
     if (lowerText.includes("plan") || lowerText.includes("prepare")) return "Planning";

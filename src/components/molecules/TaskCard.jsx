@@ -2,22 +2,29 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import ApperIcon from "@/components/ApperIcon";
-import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
+import Button from "@/components/atoms/Button";
 
 const TaskCard = ({ 
   task, 
   onComplete, 
   onDefer, 
-  onReschedule, 
+  onReschedule,
+  onCategoryChange, 
   showActions = true,
   isCompleted = false,
   isDeferred = false 
 }) => {
   const [showDeferOptions, setShowDeferOptions] = useState(false);
+  const [showCategoryOptions, setShowCategoryOptions] = useState(false);
 
   const handleComplete = () => {
     onComplete?.(task.Id);
+  };
+
+  const handleCategoryChange = (category) => {
+    onCategoryChange?.(task.Id, category);
+    setShowCategoryOptions(false);
   };
 
   const handleQuickDefer = (days) => {
@@ -137,6 +144,44 @@ const TaskCard = ({
               <ApperIcon name="Calendar" size={14} className="mr-1" />
               Pick date
             </Button>
+          </div>
+</motion.div>
+      )}
+
+      {showCategoryOptions && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          className="mt-4 pt-4 border-t border-gray-200"
+        >
+          <p className="text-sm text-gray-600 mb-3 font-medium">Categorize this task:</p>
+          <div className="grid grid-cols-2 gap-2">
+            {["Campaign", "Admin", "Creative", "Development", "Meeting", "Review", "Documentation", "Planning"].map((category) => (
+              <Button
+                key={category}
+                size="sm"
+                variant="ghost"
+                onClick={() => handleCategoryChange(category)}
+                className={cn(
+                  "text-xs justify-start h-8",
+                  task.category === category && "bg-primary/10 text-primary font-semibold"
+                )}
+              >
+                <span className={cn(
+                  "w-2 h-2 rounded-full mr-2",
+                  category === "Campaign" && "bg-purple-500",
+                  category === "Admin" && "bg-blue-500",
+                  category === "Creative" && "bg-green-500",
+                  category === "Development" && "bg-indigo-500",
+                  category === "Meeting" && "bg-orange-500",
+                  category === "Review" && "bg-yellow-500",
+                  category === "Documentation" && "bg-gray-500",
+                  category === "Planning" && "bg-pink-500"
+                )} />
+                {category}
+              </Button>
+            ))}
           </div>
         </motion.div>
       )}

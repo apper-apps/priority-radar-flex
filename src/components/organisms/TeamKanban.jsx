@@ -112,13 +112,26 @@ const TeamKanban = ({ currentUser }) => {
                       </div>
                     </div>
 
-                    <div className="space-y-3 max-h-80 overflow-y-auto">
+<div className="space-y-3 max-h-80 overflow-y-auto">
                       {checkIn.priorities.map((priority) => (
                         <TaskCard
                           key={priority.Id}
                           task={priority}
                           showActions={false}
                           isCompleted={!!priority.completedAt}
+                          onCategoryChange={(taskId, newCategory) => {
+                            // Update local state for immediate visual feedback
+                            setCheckIns(prev => prev.map(ci => 
+                              ci.userId === checkIn.userId 
+                                ? {
+                                    ...ci,
+                                    priorities: ci.priorities.map(p => 
+                                      p.Id === taskId ? { ...p, category: newCategory } : p
+                                    )
+                                  }
+                                : ci
+                            ));
+                          }}
                         />
                       ))}
                     </div>
