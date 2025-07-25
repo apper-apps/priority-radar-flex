@@ -6,6 +6,7 @@ import TodayFocus from "@/components/pages/TodayFocus";
 import TeamView from "@/components/pages/TeamView";
 import MyProgress from "@/components/pages/MyProgress";
 import WeeklySummaryPage from "@/components/pages/WeeklySummaryPage";
+import APICatalogPage from "@/components/pages/APICatalogPage";
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<TodayFocus />} />
-            <Route path="team" element={<TeamView />} />
+<Route path="team" element={<TeamView />} />
             <Route path="progress" element={<MyProgress />} />
             <Route path="summary" element={<WeeklySummaryPage />} />
+            <Route path="apis" element={<APICatalogPage />} />
           </Route>
         </Routes>
         

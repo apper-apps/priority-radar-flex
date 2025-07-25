@@ -5,16 +5,16 @@ import ApperIcon from "@/components/ApperIcon";
 
 const NavigationTabs = ({ tabs }) => {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-surface/95 backdrop-blur-md border-t-2 border-gray-100 z-50">
-      <div className="flex justify-around py-2">
+<nav className="fixed bottom-0 left-0 right-0 bg-surface/95 backdrop-blur-md border-t-2 border-gray-100 z-50">
+      <div className="flex justify-around py-2 px-1">
         {tabs.map((tab) => (
           <NavLink
             key={tab.path}
             to={tab.path}
-            className={({ isActive }) =>
+className={({ isActive }) =>
               cn(
-                "flex flex-col items-center justify-center p-3 rounded-2xl transition-all duration-200 relative min-w-[60px]",
-                isActive 
+                "flex flex-col items-center justify-center p-2 rounded-2xl transition-all duration-200 relative min-w-[50px] flex-1",
+                isActive
                   ? "text-primary" 
                   : "text-gray-500 hover:text-primary"
               )

@@ -9,11 +9,12 @@ const Card = forwardRef(({
 }, ref) => {
   const baseStyles = "bg-surface rounded-2xl shadow-lg transition-all duration-200 hand-drawn-border";
   
-  const variants = {
+const variants = {
     default: "p-6",
     compact: "p-4",
     large: "p-8",
-    hover: "p-6 hover:shadow-xl hover:scale-[1.02] cursor-pointer"
+    hover: "p-6 hover:shadow-xl hover:scale-[1.02] cursor-pointer",
+    info: "p-6 bg-gradient-to-br from-info/5 to-secondary/5 border-info/20"
   };
 
   return (

@@ -19,10 +19,15 @@ const Layout = () => {
       icon: "BarChart3",
       label: "Progress"
     },
-    {
+{
       path: "/summary",
       icon: "Calendar",
       label: "Weekly"
+    },
+    {
+      path: "/apis",
+      icon: "Database",
+      label: "APIs"
     }
   ];
 

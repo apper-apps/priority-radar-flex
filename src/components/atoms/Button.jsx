@@ -13,7 +13,8 @@ const Button = forwardRef(({
   const variants = {
     primary: "bg-gradient-to-r from-primary to-error hover:from-error hover:to-primary text-white shadow-lg hover:shadow-xl focus:ring-primary",
     secondary: "bg-gradient-to-r from-secondary to-info hover:from-info hover:to-secondary text-white shadow-lg hover:shadow-xl focus:ring-secondary",
-    accent: "bg-gradient-to-r from-accent to-warning hover:from-warning hover:to-accent text-gray-800 shadow-lg hover:shadow-xl focus:ring-accent",
+accent: "bg-gradient-to-r from-accent to-warning hover:from-warning hover:to-accent text-gray-800 shadow-lg hover:shadow-xl focus:ring-accent",
+    info: "bg-gradient-to-r from-info to-secondary hover:from-secondary hover:to-info text-white shadow-lg hover:shadow-xl focus:ring-info",
     outline: "border-2 border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary",
     ghost: "text-primary hover:bg-primary/10 focus:ring-primary"
   };
