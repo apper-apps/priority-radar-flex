@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import { checkInService } from "@/services/api/checkInService";
 import CheckInForm from "@/components/organisms/CheckInForm";
 import CheckOutReview from "@/components/organisms/CheckOutReview";
