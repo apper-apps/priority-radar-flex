@@ -30,9 +30,9 @@ const handleSubmit = async (e) => {
     if (priorityList.length === 0) {
       toast.error("Please add at least one priority for today! 📝");
       return;
-    }
+}
 
-setIsSubmitting(true);
+    setIsSubmitting(true);
     
     try {
       console.log("Creating check-in for user:", currentUser.id, "with priorities:", priorityList);
