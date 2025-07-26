@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import { checkInService } from "@/services/api/checkInService";
 import CheckInForm from "@/components/organisms/CheckInForm";
 import CheckOutReview from "@/components/organisms/CheckOutReview";
 import Loading from "@/components/ui/Loading";
-import Empty from "@/components/ui/Empty";
 import Error from "@/components/ui/Error";
-import { checkInService } from "@/services/api/checkInService";
-import { useCurrentUser } from "@/hooks/useCurrentUser";
-
+import Empty from "@/components/ui/Empty";
 const TodayFocus = () => {
   const { currentUser, loading: userLoading } = useCurrentUser();
   const [todaysCheckIn, setTodaysCheckIn] = useState(null);
@@ -14,7 +15,9 @@ const TodayFocus = () => {
   const [error, setError] = useState(null);
   const [viewMode, setViewMode] = useState("checkin"); // checkin, checkout
 
-useEffect(() => {
+const navigate = useNavigate();
+
+  useEffect(() => {
     let mounted = true;
     
     if (currentUser && mounted) {
@@ -50,11 +53,10 @@ useEffect(() => {
     loadTodaysCheckIn();
   };
 
-  const handleCheckOutComplete = () => {
-    // Could navigate to summary or reset for next day
-    console.log("Day completed!");
+const handleCheckOutComplete = () => {
+    toast.success("Great job today! 🎉 See you tomorrow!");
+    navigate("/progress");
   };
-
   if (userLoading || loading) {
     return <Loading />;
   }

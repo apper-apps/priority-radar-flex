@@ -194,7 +194,7 @@ class CheckInService {
     };
 }
 
-  categorizeTask(text) {
+categorizeTask(text) {
     const lowerText = text.toLowerCase();
     if (lowerText.includes("campaign") || lowerText.includes("marketing") || lowerText.includes("promotion")) return "Campaign";
     if (lowerText.includes("admin") || lowerText.includes("administrative") || lowerText.includes("paperwork")) return "Admin";
@@ -207,7 +207,7 @@ class CheckInService {
     return "General";
   }
 
-delay(ms) {
+  delay(ms) {
     console.log(`⏱️ Service delay: ${ms}ms - ${new Date().toLocaleTimeString()}`);
     return new Promise(resolve => setTimeout(resolve, ms));
   }

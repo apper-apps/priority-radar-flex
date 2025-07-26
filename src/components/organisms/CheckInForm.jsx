@@ -102,11 +102,7 @@ const handleSubmit = async (e) => {
               type="submit"
               size="lg"
               disabled={isSubmitting || !priorities.trim()}
-              className="w-full font-bold text-lg py-4 cursor-pointer hover:scale-105 transition-all duration-200 active:scale-95"
-              style={{ 
-                pointerEvents: (isSubmitting || !priorities.trim()) ? 'none' : 'auto',
-                zIndex: 10 
-              }}
+              className="w-full font-bold text-lg py-4 hover:scale-105 transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>

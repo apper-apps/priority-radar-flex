@@ -159,8 +159,11 @@ const CheckOutReview = ({ currentUser, onComplete }) => {
               <p className="text-gray-700 mb-4">
                 You completed all your priorities today. That's amazing!
               </p>
-              <Button
-                onClick={onComplete}
+<Button
+                onClick={() => {
+                  toast.success("Perfect day completed! 🎉");
+                  onComplete();
+                }}
                 className="bg-gradient-to-r from-success to-secondary"
               >
                 <ApperIcon name="CheckCircle" size={20} className="mr-2" />
@@ -176,7 +179,10 @@ const CheckOutReview = ({ currentUser, onComplete }) => {
               <p className="text-gray-700 mb-4">
                 You're doing really well! Don't forget about the remaining tasks.
               </p>
-              <Button onClick={onComplete}>
+<Button onClick={() => {
+                toast.success("Great progress today! Keep it up! 💪");
+                onComplete();
+              }}>
                 <ApperIcon name="ArrowRight" size={20} className="mr-2" />
                 Continue Tomorrow 💪
               </Button>
@@ -190,7 +196,10 @@ const CheckOutReview = ({ currentUser, onComplete }) => {
               <p className="text-gray-700 mb-4">
                 Some days are harder than others, and that's perfectly okay. What matters is showing up.
               </p>
-              <Button onClick={onComplete} variant="secondary">
+<Button onClick={() => {
+                toast.info("Tomorrow is a fresh start! 🌅");
+                onComplete();
+              }} variant="secondary">
                 <ApperIcon name="Sunrise" size={20} className="mr-2" />
                 Plan Tomorrow 🌅
               </Button>

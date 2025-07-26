@@ -82,15 +82,10 @@ const StartCheckInButton = () => {
 
     return (
       <Button
-        onClick={handleStartCheckIn}
+onClick={handleStartCheckIn}
         type="button"
         disabled={isNavigating}
-        className="mt-4 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold py-2 px-4 rounded-full transition-all duration-200 transform hover:scale-105 cursor-pointer active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-        style={{ 
-          pointerEvents: isNavigating ? 'none' : 'auto', 
-          zIndex: 10,
-          touchAction: 'manipulation'
-        }}
+        className="mt-4 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold py-2 px-4 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isNavigating ? (
           <>
