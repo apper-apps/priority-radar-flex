@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Card from "@/components/atoms/Card";
 import TaskCard from "@/components/molecules/TaskCard";
 import UserAvatar from "@/components/molecules/UserAvatar";
 import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
 import { userService } from "@/services/api/userService";
 import { checkInService } from "@/services/api/checkInService";
 
@@ -32,6 +35,8 @@ const TeamKanban = ({ currentUser }) => {
     }
   };
 
+const navigate = useNavigate();
+
   const getUserCheckIn = (userId) => {
     return checkIns.find(checkIn => checkIn.userId === userId);
   };
@@ -42,6 +47,22 @@ const TeamKanban = ({ currentUser }) => {
     return Math.round((completed / checkIn.priorities.length) * 100);
   };
 
+  const StartCheckInButton = () => {
+    const handleStartCheckIn = () => {
+      toast.info("Redirecting to set today's focus...");
+      navigate("/");
+    };
+
+    return (
+      <Button
+        onClick={handleStartCheckIn}
+        className="mt-4 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold py-2 px-4 rounded-full transition-all duration-200 transform hover:scale-105"
+      >
+        <ApperIcon name="Play" size={16} className="mr-2" />
+        Start Check-In
+      </Button>
+    );
+  };
   if (loading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -145,7 +166,7 @@ const TeamKanban = ({ currentUser }) => {
                       </div>
                     )}
                   </div>
-                ) : (
+) : (
                   <div className="text-center py-8">
                     <ApperIcon name="Clock" size={32} className="text-gray-400 mx-auto mb-3" />
                     <p className="text-gray-500 font-medium">
@@ -154,6 +175,9 @@ const TeamKanban = ({ currentUser }) => {
                     <p className="text-sm text-gray-400 mt-1">
                       Waiting for their morning priorities
                     </p>
+                    {isCurrentUser && (
+                      <StartCheckInButton />
+                    )}
                   </div>
                 )}
               </Card>
