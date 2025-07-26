@@ -1,7 +1,7 @@
 import checkInsData from "@/services/mockData/checkIns.json";
 import { priorityService } from "./priorityService";
 import { format, startOfWeek, endOfWeek, subWeeks, isToday, startOfDay } from "date-fns";
-
+import { toast } from "react-toastify";
 class CheckInService {
   constructor() {
     this.checkIns = [...checkInsData];

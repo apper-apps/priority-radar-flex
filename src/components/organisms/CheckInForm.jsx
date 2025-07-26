@@ -13,7 +13,7 @@ const CheckInForm = ({ onCheckInComplete, currentUser }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 const [showCelebration, setShowCelebration] = useState(false);
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!priorities.trim()) {
@@ -32,9 +32,10 @@ const [showCelebration, setShowCelebration] = useState(false);
       return;
     }
 
-    setIsSubmitting(true);
+setIsSubmitting(true);
     
     try {
+      console.log("Creating check-in for user:", currentUser.id, "with priorities:", priorityList);
       await checkInService.createCheckIn(currentUser.id, priorityList);
       
       setShowCelebration(true);
@@ -46,9 +47,9 @@ const [showCelebration, setShowCelebration] = useState(false);
         onCheckInComplete?.();
       }, 1000);
       
-    } catch (error) {
+} catch (error) {
       console.error("Check-in error:", error);
-      toast.error("Oops! Something went wrong. Please try again. 😅");
+      toast.error(`Oops! Something went wrong: ${error.message}. Please try again. 😅`);
     } finally {
       setIsSubmitting(false);
     }
