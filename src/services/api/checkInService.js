@@ -207,7 +207,8 @@ class CheckInService {
     return "General";
   }
 
-  delay(ms) {
+delay(ms) {
+    console.log(`Service delay: ${ms}ms`);
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 }

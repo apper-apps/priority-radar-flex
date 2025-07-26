@@ -47,16 +47,29 @@ const navigate = useNavigate();
     return Math.round((completed / checkIn.priorities.length) * 100);
   };
 
-  const StartCheckInButton = () => {
-    const handleStartCheckIn = () => {
-      toast.info("Redirecting to set today's focus...");
-      navigate("/");
+const StartCheckInButton = () => {
+    const handleStartCheckIn = (e) => {
+      console.log("Start Check-In button clicked!", e);
+      e.preventDefault();
+      e.stopPropagation();
+      
+      toast.info("Redirecting to set today's focus...", {
+        position: "top-center",
+        autoClose: 1500
+      });
+      
+      // Immediate navigation
+      setTimeout(() => {
+        navigate("/");
+      }, 200);
     };
 
     return (
       <Button
         onClick={handleStartCheckIn}
-        className="mt-4 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold py-2 px-4 rounded-full transition-all duration-200 transform hover:scale-105"
+        type="button"
+        className="mt-4 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold py-2 px-4 rounded-full transition-all duration-200 transform hover:scale-105 cursor-pointer active:scale-95"
+        style={{ pointerEvents: 'auto', zIndex: 10 }}
       >
         <ApperIcon name="Play" size={16} className="mr-2" />
         Start Check-In

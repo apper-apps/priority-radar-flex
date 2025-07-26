@@ -75,7 +75,7 @@ const handleSubmit = async (e) => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+<form onSubmit={handleSubmit} className="space-y-6">
             <TextArea
               label="Today's Priorities"
               placeholder="• Finish the presentation for tomorrow's meeting&#10;• Review and approve the marketing campaign&#10;• Call the client about project updates&#10;• Organize team lunch for Friday"
@@ -84,24 +84,32 @@ const handleSubmit = async (e) => {
               rows={6}
               className="text-lg leading-relaxed"
             />
-            
-            <div className="bg-gradient-to-r from-accent/10 to-warning/10 border border-accent/30 rounded-xl p-4">
-              <div className="flex items-start gap-3">
-                <ApperIcon name="Lightbulb" size={20} className="text-accent flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-semibold text-gray-800 mb-1">💡 Pro tip:</p>
-                  <p className="text-sm text-gray-700">
-                    List each priority on a new line. You'll be able to check them off individually later!
-                  </p>
-                </div>
-              </div>
+
+            <div className="flex items-center space-x-3 text-sm text-gray-600 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+              <ApperIcon name="Info" size={16} className="text-blue-600" />
+              <p>
+                <strong className="text-blue-800">Pro tip:</strong> 
+                Write each priority on a new line and be specific about what success looks like!
+              </p>
+            </div>
+
+            {/* Character counter */}
+            <div className="text-right text-sm text-gray-500">
+              {priorities.length}/500 characters
             </div>
 
             <Button
               type="submit"
               size="lg"
               disabled={isSubmitting || !priorities.trim()}
-              className="w-full font-bold text-lg py-4"
+              className="w-full font-bold text-lg py-4 cursor-pointer hover:scale-105 transition-all duration-200"
+              onClick={(e) => {
+                console.log("Button clicked!", e);
+                // Ensure form submission isn't blocked
+                if (!isSubmitting && priorities.trim()) {
+                  handleSubmit(e);
+                }
+              }}
             >
               {isSubmitting ? (
                 <>
