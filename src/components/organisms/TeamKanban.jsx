@@ -48,31 +48,61 @@ const navigate = useNavigate();
   };
 
 const StartCheckInButton = () => {
-    const handleStartCheckIn = (e) => {
-      console.log("Start Check-In button clicked!", e);
+    const [isNavigating, setIsNavigating] = useState(false);
+
+    const handleStartCheckIn = async (e) => {
+      console.log("🚀 Start Check-In button clicked!", e);
       e.preventDefault();
       e.stopPropagation();
       
-      toast.info("Redirecting to set today's focus...", {
-        position: "top-center",
-        autoClose: 1500
-      });
-      
-      // Immediate navigation
-      setTimeout(() => {
-        navigate("/");
-      }, 200);
+      if (isNavigating) {
+        console.log("⚠️ Already navigating, ignoring click");
+        return;
+      }
+
+      try {
+        setIsNavigating(true);
+        
+        toast.info("Redirecting to set today's focus...", {
+          position: "top-center",
+          autoClose: 1500
+        });
+        
+        console.log("📍 Navigating to home page...");
+        
+        // Use immediate navigation without setTimeout
+        navigate("/", { replace: true });
+        
+      } catch (error) {
+        console.error("❌ Navigation error:", error);
+        toast.error("Navigation failed, please try again");
+        setIsNavigating(false);
+      }
     };
 
     return (
       <Button
         onClick={handleStartCheckIn}
         type="button"
-        className="mt-4 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold py-2 px-4 rounded-full transition-all duration-200 transform hover:scale-105 cursor-pointer active:scale-95"
-        style={{ pointerEvents: 'auto', zIndex: 10 }}
+        disabled={isNavigating}
+        className="mt-4 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold py-2 px-4 rounded-full transition-all duration-200 transform hover:scale-105 cursor-pointer active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+        style={{ 
+          pointerEvents: isNavigating ? 'none' : 'auto', 
+          zIndex: 10,
+          touchAction: 'manipulation'
+        }}
       >
-        <ApperIcon name="Play" size={16} className="mr-2" />
-        Start Check-In
+        {isNavigating ? (
+          <>
+            <ApperIcon name="Loader2" size={16} className="mr-2 animate-spin" />
+            Redirecting...
+          </>
+        ) : (
+          <>
+            <ApperIcon name="Play" size={16} className="mr-2" />
+            Start Check-In
+          </>
+        )}
       </Button>
     );
   };

@@ -208,7 +208,7 @@ class CheckInService {
   }
 
 delay(ms) {
-    console.log(`Service delay: ${ms}ms`);
+    console.log(`⏱️ Service delay: ${ms}ms - ${new Date().toLocaleTimeString()}`);
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 }

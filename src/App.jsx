@@ -13,9 +13,9 @@ function App() {
     <BrowserRouter>
       <div className="App font-body">
         <Routes>
-          <Route path="/" element={<Layout />}>
+<Route path="/" element={<Layout />}>
             <Route index element={<TodayFocus />} />
-<Route path="team" element={<TeamView />} />
+            <Route path="team" element={<TeamView />} />
             <Route path="progress" element={<MyProgress />} />
             <Route path="summary" element={<WeeklySummaryPage />} />
             <Route path="apis" element={<APICatalogPage />} />

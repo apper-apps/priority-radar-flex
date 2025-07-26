@@ -98,17 +98,14 @@ const handleSubmit = async (e) => {
               {priorities.length}/500 characters
             </div>
 
-            <Button
+<Button
               type="submit"
               size="lg"
               disabled={isSubmitting || !priorities.trim()}
-              className="w-full font-bold text-lg py-4 cursor-pointer hover:scale-105 transition-all duration-200"
-              onClick={(e) => {
-                console.log("Button clicked!", e);
-                // Ensure form submission isn't blocked
-                if (!isSubmitting && priorities.trim()) {
-                  handleSubmit(e);
-                }
+              className="w-full font-bold text-lg py-4 cursor-pointer hover:scale-105 transition-all duration-200 active:scale-95"
+              style={{ 
+                pointerEvents: (isSubmitting || !priorities.trim()) ? 'none' : 'auto',
+                zIndex: 10 
               }}
             >
               {isSubmitting ? (

@@ -14,11 +14,18 @@ const TodayFocus = () => {
   const [error, setError] = useState(null);
   const [viewMode, setViewMode] = useState("checkin"); // checkin, checkout
 
-  useEffect(() => {
-    if (currentUser) {
+useEffect(() => {
+    let mounted = true;
+    
+    if (currentUser && mounted) {
+      console.log("🔄 Loading today's check-in for user:", currentUser.id);
       loadTodaysCheckIn();
     }
-  }, [currentUser]);
+    
+    return () => {
+      mounted = false;
+    };
+  }, [currentUser?.id]); // Only depend on user ID to prevent loops
 
   const loadTodaysCheckIn = async () => {
     try {

@@ -12,11 +12,17 @@ const TeamView = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (currentUser) {
+useEffect(() => {
+    let mounted = true;
+    
+    if (currentUser && mounted) {
       checkUserAccess();
     }
-  }, [currentUser]);
+    
+    return () => {
+      mounted = false;
+    };
+  }, [currentUser?.id]); // Only depend on user ID to prevent loops
 
   const checkUserAccess = async () => {
     try {
